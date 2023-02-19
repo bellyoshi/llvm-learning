@@ -1,0 +1,10 @@
+チュートリアル
+https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html
+
+リファレンス
+https://llvm.org/docs/LangRef.html
+https://llvm.org/doxygen/index.html
+
+LLVM 6.0で作るフロントエンドの道しるべ
+https://qiita.com/sakasin/items/097fa676ccfd117acaa2
+
