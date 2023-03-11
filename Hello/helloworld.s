@@ -8,9 +8,8 @@ main:                                   # @main
 # %bb.0:
 	pushq	%rax
 	.cfi_def_cfa_offset 16
-	movl	$.L.str, %edi
-	xorl	%eax, %eax
-	callq	printf
+	movl	$.Lstr, %edi
+	callq	puts
 	xorl	%eax, %eax
 	popq	%rcx
 	.cfi_def_cfa_offset 8
@@ -19,11 +18,11 @@ main:                                   # @main
 	.size	main, .Lfunc_end0-main
 	.cfi_endproc
                                         # -- End function
-	.type	.L.str,@object          # @.str
+	.type	.Lstr,@object           # @str
 	.section	.rodata.str1.1,"aMS",@progbits,1
-.L.str:
+.Lstr:
 	.asciz	"Hello, world!"
-	.size	.L.str, 14
+	.size	.Lstr, 14
 
 	.ident	"clang version 10.0.0-4ubuntu1 "
 	.section	".note.GNU-stack","",@progbits

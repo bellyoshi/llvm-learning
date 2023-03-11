@@ -1,0 +1,107 @@
+(* language name dummy c *)
+(* Like a C Language *)
+(* sub set of C Language*)
+
+
+
+
+
+translation_unit
+  : external_declaration
+  ;
+
+external_declaration
+    : function_definition
+    | function_declaration
+    ;
+
+function_declaration
+    : prototype, ";"
+    ;
+
+function_definition
+    : prototype, function_statement
+    ;
+
+prototype
+    : "int" identifier, "(", [parameter, {"," , parameter}], ")"
+    ;
+
+parameter
+    : "int" identifier
+    ;
+
+function_statement
+    : "{", {variable_declaration_list}, statement_list, "}"
+    ;
+
+variable_declaration_list
+    : { variable_declaration }
+    ;
+
+variable_declaration
+    : "int" identifier, ";"
+    ; 
+
+statement_list
+    : { statement }
+    ;
+
+statement
+    : expression_statement
+    | jump_statement
+    ;
+
+expression_statement
+    : ";"
+    | assignment_expression, ";"
+    ;
+
+jump_statement
+    : "return", assignment_expression, ";"
+    ;
+
+assignment_expression
+    : identifier, "=", assignment_expression
+    | additive_expression
+    ;
+
+additive_expression
+    : multiplicative_expression, {"+"|"-", multiplicative_expression}
+    ;
+
+multiplicative_expression
+    : postfix_expression, {"*"|"/", postfix_expression}
+    ;
+
+postfix_expression
+    : primary_expression
+    | identifier, "(", [assignment_expression, {"," , assignment_expression}], ")"
+    ;
+
+primary_expression
+    : identifier
+    | integer
+    | "(", additive_expression, ")"
+    ;
+
+identifier
+    : charactar, [{charactar | digit}]
+    ;
+
+integer
+    : "0" | ["-"] digit_excluding_zero, [{digit}]
+    ;
+
+charactar
+    : "a".."z" | "A".."Z" | "_"
+    ;
+
+digit_excluding_zero
+    : "1".."9"
+    ;
+
+digit
+    : "0".."9"
+    ;
+
